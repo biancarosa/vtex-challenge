@@ -78,7 +78,6 @@ class Graph {
 
     public void addEdge(int u, int v) {
         this.graph[u][v] = true;
-        this.graph[v][u] = true;
     }
 
     public int getVertices() {
