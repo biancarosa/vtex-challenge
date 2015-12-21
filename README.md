@@ -52,7 +52,7 @@ Saída: (1, 2, 4)
 ### Solução
 A solução foi feita em Java, baseada em um [código meu já existente](https://github.com/biancarosa/algorithms/blob/master/DepthFirstSearch.java), com as modificações necessárias para imprimir o caminho através da DFS e, como sugerido pelo enunciado do problema, trocando a matriz por um mapa.
 
-A idéia de manter inner classes e o código numa classe só foi para facilitar a compilação e leitura.
+A idéia de manter o código num arquivo só foi para facilitar a compilação e leitura.
 
 ### Rodando o código
 Rodei o código da seguinte forma:
