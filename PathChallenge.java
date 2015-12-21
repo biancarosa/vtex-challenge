@@ -14,6 +14,12 @@ public class PathChallenge {
     private static boolean visited[];
     private static Graph graph;
 
+    /**
+    ** This is a modification of the DFS(Depth-First Search) algorithm.
+    ** Instead of visiting all possible paths, it returns when path reaches goal vertice.
+    ** To do that, the current path is passed through the recursion stack.
+    ** If no path was found, returns a empty linked list.
+    */
     public static List findPath(int w, int goal, List<Integer> path) {
         visited[w] = true;
         path.add(w);
@@ -52,13 +58,16 @@ public class PathChallenge {
                 visited[i] = false;
             }
             List path = findPath(start, end, new LinkedList());
-            ListIterator<Integer> listIterator = path.listIterator();
-            System.out.println("Start path");
-	        while (listIterator.hasNext()) {
-	            System.out.println(listIterator.next());
-	        }
-            System.out.println("End path");
-
+            if (path.size() > 0) {
+                ListIterator<Integer> listIterator = path.listIterator();
+                System.out.println("Start path");
+                while (listIterator.hasNext()) {
+                    System.out.println(listIterator.next());
+                }
+                System.out.println("End path");
+            } else {
+                System.out.println("No path was found");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,7 +121,6 @@ class Graph {
     }
 
 }
-
 
 class GraphInputHandler {
     public Graph readInput(Scanner scanner) throws IOException {

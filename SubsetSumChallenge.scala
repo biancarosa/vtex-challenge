@@ -1,3 +1,8 @@
+/**
+** Given a set, returns all subsets with the target sum.
+** It is based on the Power Set math theory.
+** Args should have at least the target sum (minimal runnable code: scala SubsetSumChallenge.scala 6)
+*/
 object SubsetSumChallenge {
   def calculatePowerSetSize(setSize: Int) : Int = {
     return math.pow(2, setSize.toDouble).toInt
@@ -28,20 +33,26 @@ object SubsetSumChallenge {
 
     set = cleanSet(set, targetSum)
     val powerSetSize = calculatePowerSetSize(set.length)
-
+    var outputs = 0
     for (i <- 0 until powerSetSize) {
         var powerSet = new Array[Int](0)
         var sum = 0
+        // To retrieve the numbers on the PowerSet i, we loop through the whole set...
         for (j <- 0 until set.length) {
-            val a = i & (1<<j);
-            if (a > 0) {
+            //And if the number is "part" of this particular subset (bit is one for the position j) we add to the current power set
+            var bitIsOne = i & (1<<j);
+            if (bitIsOne > 0) {
                 powerSet = powerSet :+ set(j)
                 sum += set(j)
             }
         }
         if (sum == targetSum) {
             println (powerSet.mkString(","))
+            outputs = outputs + 1
         }
+    }
+    if (outputs == 0) {
+        println ("Couldn't find a subset with given target sum")
     }
   }
 }
